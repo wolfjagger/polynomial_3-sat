@@ -13,6 +13,18 @@ mkdir build && cd build
 cmake ..
 make -j
 ```
+##  Mac users
+
+Install g++-7 compiler using brew
+
+```
+brew install gcc@7
+```
+
+In cmake-gui specify native compilers and point them to
+```
+/usr/local/bin/g++-7 and /usr/local/bin/gcc-7
+```
 # Run
 
 Resultant executable (default name is solver) takes one command line argument which is the path to a DIMACs file.
