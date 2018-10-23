@@ -17,6 +17,6 @@ project(solver)
 include_directories(/usr/local/include/)
 include_directories(/usr/include/)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_COMPILER mpic++)
+set(CMAKE_CXX_COMPILER c++)
 
 add_executable(solver main.cpp DimacsReader.cpp DimacsReader.h Utilities.cpp Utilities.h Preprocessor.cpp Preprocessor.h EdgeSequesnce.cpp EdgeSequesnce.h clause.h LiteralsMap.h EdgeSequenceSack.cpp EdgeSequenceSack.h VertexSequence.cpp VertexSequence.h)

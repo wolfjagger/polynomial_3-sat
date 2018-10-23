@@ -17,7 +17,6 @@
 //
 
 #include <iostream>
-#include <mpi.h>
 #include <bitset>
 #include <vector>
 #include <chrono>
