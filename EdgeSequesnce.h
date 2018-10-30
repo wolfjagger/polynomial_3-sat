@@ -29,6 +29,7 @@
 #include "LiteralsMap.h"
 #include "boost/dynamic_bitset.hpp"
 
+
 namespace  ortho {
 
     using bit_sequence = std::shared_ptr<std::vector<std::bitset<3>>>;

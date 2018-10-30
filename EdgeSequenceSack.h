@@ -46,6 +46,7 @@ namespace ortho
     public:
         SequenceSack(literals_map lit_map, ordered_clauses ord_clauses);
         void print_stats();
+        void print_stats_final();
         bool start_comparing();
         bool is_satisfiable();
 

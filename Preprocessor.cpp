@@ -24,13 +24,13 @@ namespace ortho
     {
     }
 
-    void Preprocessor::process()
+    void Preprocessor::process(bool puresFound)
     {
         std::set<long long> clausesToBeRemovedSet;
         std::set<long long> lonerLiteralsSet;
         if (_is_init)
         {
-            if (_pures.empty() && lonerLiteralsSet.empty())
+            if (!puresFound && lonerLiteralsSet.empty())
                 return;
         }
         _is_init = true;
@@ -80,6 +80,7 @@ namespace ortho
 
         //check for pures
         _pures.clear();
+        puresFound = false;
         for (const auto &pair : _literals)
         {
             long long pure = pair.second.get_pure();
@@ -87,6 +88,8 @@ namespace ortho
             {
                 std::cout << "Pure " << pure << std::endl;
                 _pures.push_back(pair.second._literal);
+                _all_pures.push_back(pair.second._literal);
+                puresFound = true;
             }
         }
         //check for loners
@@ -151,7 +154,7 @@ namespace ortho
             }
         }
 
-        process();
+        process(puresFound);
     }
 
     void Preprocessor::print_stats()
@@ -163,11 +166,11 @@ namespace ortho
         //variables
         std::cout << "Number of variables - " << _num_literals << std::endl;
         //pure variables
-        std::cout << "Number of pure variables - " << _pures.size() << std::endl;
+        std::cout << "Number of pure variables - " << _all_pures.size() << std::endl;
         if (_pures.size() > 0)
         {
             std::cout << "Pure variables -" << std::endl;
-            for (auto const& pure : _pures)
+            for (auto const& pure : _all_pures)
             {
                 std::cout << pure << std::endl;
             }

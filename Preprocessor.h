@@ -32,7 +32,7 @@ namespace ortho {
     public:
         Preprocessor(const std::vector<clause> &clauses, int num_vars);
 
-        void process();
+        void process(bool puresFound = true);
         void print_stats();
         std::vector<clause> get_processed_clauses();
         std::map<long long int, literal> get_literals_map();
@@ -43,7 +43,7 @@ namespace ortho {
         std::vector<clause> _clauses;
         int _num_literals;
         std::map<long long, literal> _literals;
-        std::vector<long long> _pures;
+        std::vector<long long> _pures, _all_pures;
         bool _is_init = false;
     };
 }

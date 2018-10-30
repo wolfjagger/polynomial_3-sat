@@ -41,10 +41,13 @@ namespace  ortho
             _bits_changed = false;
             for (size_t i=0; i<_s_sets.size()-1; i++)
             {
+#ifdef DEBUG_PRINT
                 std::cout << std::endl;
                 std::cout << "Comparing S-Set " << _s_sets.at(i).clause1 << " and S-Set " <<  _s_sets.at(i).clause2 << std::endl;
                 std::cout << _edges.size() << " Edges remaining in the system " << std::endl;
                 std::cout << _vertices.size() << " Vertices remaining in the system " << std::endl;
+#endif
+
                 for (size_t j=i+1; j<_s_sets.size(); j++)
                 {
                     count++;
@@ -56,18 +59,45 @@ namespace  ortho
             }
 
         }
-
+#ifdef DEBUG_PRINT
         std::cout << "total compares: " << count << std::endl << std::flush;
+#endif
 
         return true;
     }
 
+    void SequenceSack::print_stats_final()
+    {
+        std::cout << std::endl;
+        std::cout << "Number of Edge Sequences remaining: " << _edges.size() << std::endl;
+        std::cout << "Number of Vertex Sequences remaining: " <<_vertices.size() << std::endl;
+
+        std::cout << std::endl;
+    }
     void SequenceSack::print_stats()
     {
         std::cout << std::endl;
         std::cout << "Number of Edge Sequences: " << _edges.size() << std::endl;
         std::cout << "Number of Vertex Sequences: " <<_vertices.size() << std::endl;
         std::cout << "Number of S-Sets: " << _s_sets.size() << std::endl;
+        std::cout << std::endl;
+
+#ifdef DEBUG_PRINT
+        std::cout << "Remaining edges: " << std::endl;
+        for (const auto&[ eg_header, edge ] : _edges)
+        {
+            std::cout << eg_header << std::endl;
+        }
+        std::cout << std::endl;
+        std::cout << std::endl;
+        std::cout << "Remaining edges: " << std::endl;
+        for (const auto&[ vt_header, vertex ] : _vertices)
+        {
+            std::cout << vt_header << std::endl;
+        }
+        std::cout << std::endl;
+#endif
+
     }
 
     bool SequenceSack::compare(SSet &s1, SSet &s2)
@@ -761,7 +791,7 @@ namespace  ortho
             }
             if (vertex_count == 0) //zero clause
             {
-                std::cout << "Empty Clause found after removing vertices in clause - " << i << ". Unsatisfiable 3-sat" << std::endl;
+                std::cout << "The vertex-sequences associated with clause " << i << " are zero." << std::endl;
                 return false;
             }
         }
@@ -770,12 +800,17 @@ namespace  ortho
 
     void SequenceSack::remove_edge(EdgeHeader header)
     {
+#ifdef DEBUG_PRINT
+        std::cout << "Edge Removed: " << header << std::endl;
+#endif
         _edges.erase(header);
     }
 
     void SequenceSack::create_edges()
     {
+#ifdef DEBUG_PRINT
         std::cout << "creating edges" << std::endl;
+#endif
         for (size_t i=0; i<_ordered_clauses->size()-1; i++)
         {
             for (size_t j=i+1; j<_ordered_clauses->size(); j++)

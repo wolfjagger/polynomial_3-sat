@@ -28,6 +28,8 @@
 #include "Preprocessor.h"
 #include "EdgeSequenceSack.h"
 
+
+
 int main(int argc, char *argv[]) {
 
     if (argc != 2)
@@ -85,31 +87,42 @@ int main(int argc, char *argv[]) {
             return -1;
         }
     }
-
+#ifdef DEBUG_PRINT
+    std::cout << "Clauses going into comparing: " << std::endl;
+    for (int i=0; i<processed_clauses.size(); i++)
+    {
+        std::cout << i << ": " << processed_clauses.at(i) << std::endl;
+    }
+    std::cout << std::endl;
+#endif
     ortho::literals_map lit_map = std::make_shared<std::map<long long, ortho::literal>>(literals);
     ortho::ordered_clauses  ord_clauses = std::make_shared<std::vector<ortho::clause>>(processed_clauses);
 
     ortho::SequenceSack edges_sack(lit_map, ord_clauses);
+    std::cout << std::endl;
+    std::cout << "Before S-Set comparing there is:" << std::endl;
+
     edges_sack.print_stats();
 
 
     //first round of sset comparing
-    std::cout << std::endl;
     std::cout << "Starting S-Set comparing" << std::endl;
     if (!edges_sack.start_comparing())
     {
         std::cout << std::endl;
-        std::cout << "Unsatisfiable SSet" << std::endl;
+        std::cout << "Round 1 did not complete. There is no solution for this 3-SAT" << std::endl;
         tt = std::chrono::system_clock::to_time_t ( std::chrono::system_clock::now() );
         std::cout << "end : " << ctime(&tt);
     }
     else
     {
         std::cout << std::endl;
-        std::cout << "Round 1 finished. Solution exists for this 3-Sat" << std::endl;
-        std::cout << "status after first round" << std::endl;
+        std::cout << "Round 1 completed." << std::endl;
+        std::cout << std::endl;
+        std::cout << "There exists at least one solution for this 3-Sat" << std::endl;
 
-        edges_sack.print_stats();
+
+        edges_sack.print_stats_final();
 
         tt = std::chrono::system_clock::to_time_t ( std::chrono::system_clock::now() );
         std::cout << "end : " << ctime(&tt);
