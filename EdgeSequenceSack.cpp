@@ -226,7 +226,7 @@ namespace  ortho
 
                 for (int cls=0; cls<_ordered_clauses->size(); cls++)
                 {
-                    ulong changes = (union_result.at(cls) ^ set2_edges.at(i).at(cls)).to_ulong();
+                    unsigned long changes = (union_result.at(cls) ^ set2_edges.at(i).at(cls)).to_ulong();
                     if (changes != 0)
                     {
                         _bits_changed = true;
@@ -384,7 +384,7 @@ namespace  ortho
 
                 for (int cls=0; cls<_ordered_clauses->size(); cls++)
                 {
-                    ulong changes = (union_result.at(cls) ^ set1_edges.at(i).at(cls)).to_ulong();
+                    unsigned long changes = (union_result.at(cls) ^ set1_edges.at(i).at(cls)).to_ulong();
                     if (changes != 0)
                     {
                         _bits_changed = true;
