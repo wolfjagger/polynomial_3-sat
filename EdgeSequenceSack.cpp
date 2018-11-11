@@ -147,12 +147,12 @@ namespace  ortho
         }
         if (set1_edges.empty())
         {
-            std::cout << "Empty SSet " << s1 << ". Unsatisfiable 3-sat" << std::endl;
+            std::cout << "Empty SSet found"  << std::endl;
             return false;
         }
         if (set2_edges.empty())
         {
-            std::cout << "Empty SSet " << s2 << ". Unsatisfiable 3-sat" << std::endl;
+            std::cout << "Empty SSet found " << std::endl;
             return false;
         }
         std::list<long long> to_be_removed;
@@ -791,7 +791,7 @@ namespace  ortho
             }
             if (vertex_count == 0) //zero clause
             {
-                std::cout << "The vertex-sequences associated with clause " << i << " are zero." << std::endl;
+                std::cout << "All vertex-sequences associated with a clause became zero during comparing." << std::endl;
                 return false;
             }
         }

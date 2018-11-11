@@ -48,9 +48,9 @@ namespace ortho
             }
             literal lit = _literals.at(val);
             std::list<std::pair<long long, int>> positions = (lit._positives.size() > 0) ? lit._positives : lit._negatives;
-            for (const auto& positives : positions)
+            for (const auto& position : positions)
             {
-                clausesToBeRemovedSet.insert(positives.first);
+                clausesToBeRemovedSet.insert(position.first);
             }
         }
         //sort clauses to be removed
@@ -86,7 +86,9 @@ namespace ortho
             long long pure = pair.second.get_pure();
             if (pure != 0)
             {
+#ifdef DEBUG_PRINT
                 std::cout << "Pure " << pure << std::endl;
+#endif
                 _pures.push_back(pair.second._literal);
                 _all_pures.push_back(pair.second._literal);
                 puresFound = true;
@@ -161,13 +163,24 @@ namespace ortho
     {
         //clauses
         std::cout << std::endl;
-        std::cout << "Number of clauses - " << _clauses.size() << std::endl;
+        if (_clauses.size() > 0)
+        {
+            std::cout << "Number of clauses remaining - " << _clauses.size() << std::endl;
+#ifdef DEBUG_PRINT
+            //variables
+            std::cout << "Number of variables - " << _num_literals << std::endl;
+            //pure variables
+            std::cout << "Number of pure variables - " << _all_pures.size() << std::endl;
+#endif
+        }
+        else //no clauses left. we found a solution in preprocessing
+        {
+            std::cout << "solution found during pre-processing " << std::endl;
+        }
 
-        //variables
-        std::cout << "Number of variables - " << _num_literals << std::endl;
-        //pure variables
-        std::cout << "Number of pure variables - " << _all_pures.size() << std::endl;
-        if (_pures.size() > 0)
+
+#ifdef DEBUG_PRINT
+        if (_all_pures.size() > 0)
         {
             std::cout << "Pure variables -" << std::endl;
             for (auto const& pure : _all_pures)
@@ -175,7 +188,7 @@ namespace ortho
                 std::cout << pure << std::endl;
             }
         }
-
+#endif
         //placeholders
 
     }

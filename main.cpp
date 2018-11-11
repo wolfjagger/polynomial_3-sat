@@ -61,29 +61,33 @@ int main(int argc, char *argv[]) {
 
     ortho::Preprocessor preprocessor(reader.get_clauses(), reader.get_var_count());
     preprocessor.process();
+
+    std::cout << std::endl;
+    std::cout << "Pre-processing is completed" << std::endl;
     preprocessor.print_stats();
 
-
-
-    long long count = reader.get_clause_count();
 
     std::vector<ortho::clause> processed_clauses = preprocessor.get_processed_clauses();
     std::map<long long, ortho::literal> literals = preprocessor.get_literals_map();
 
     //check clause count
+
     if (processed_clauses.size() == 0)
     {
+#ifdef DEBUG_PRINT
         std::cout << std::endl;
         std::cout << "No clauses left after pre processing. Program won't go to comparing" << std::endl;
+#endif
         return -1;
     }
+
     //check if we have zero element clauses
     for ( const auto& cl : processed_clauses)
     {
         if (cl._elements_count == 0)
         {
             std::cout << std::endl;
-            std::cout << "A clause with zero elements found after preprocessing. No Solution exist" << std::endl;
+            std::cout << "An empty clause found after pre-processing. No Solution exist" << std::endl;
             return -1;
         }
     }
