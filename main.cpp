@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
     preprocessor.process();
 
     std::cout << std::endl;
-    std::cout << "Pre-processing is completed" << std::endl;
+    std::cout << "Pre-processing is completed." << std::endl;
     preprocessor.print_stats();
 
 
@@ -87,7 +87,7 @@ int main(int argc, char *argv[]) {
         if (cl._elements_count == 0)
         {
             std::cout << std::endl;
-            std::cout << "An empty clause found after pre-processing. No Solution exist" << std::endl;
+            std::cout << "An empty clause was created during pre-processing, therefore no solution exists." << std::endl;
             return -1;
         }
     }

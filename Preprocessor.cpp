@@ -165,8 +165,9 @@ namespace ortho
         std::cout << std::endl;
         if (_clauses.size() > 0)
         {
-            std::cout << "Number of clauses remaining - " << _clauses.size() << std::endl;
+
 #ifdef DEBUG_PRINT
+            std::cout << "Number of clauses remaining - " << _clauses.size() << std::endl;
             //variables
             std::cout << "Number of variables - " << _num_literals << std::endl;
             //pure variables
@@ -175,7 +176,7 @@ namespace ortho
         }
         else //no clauses left. we found a solution in preprocessing
         {
-            std::cout << "solution found during pre-processing " << std::endl;
+            std::cout << "A solution was found during pre-processing." << std::endl;
         }
 
 
