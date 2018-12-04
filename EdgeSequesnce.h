@@ -27,7 +27,6 @@
 
 #include "clause.h"
 #include "LiteralsMap.h"
-#include "boost/dynamic_bitset.hpp"
 
 
 namespace  ortho {
