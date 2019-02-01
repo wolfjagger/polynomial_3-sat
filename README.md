@@ -1,5 +1,5 @@
 # Polynomial 3-Sat solver
-This is a reference implementation of Ortho's polynomial 3-Sat solver (http://polynomial3sat.org). Programing language used is  C++.
+This is a reference implementation of Ortho's polynomial 3-Sat solver (http://polynomial3sat.org). The programing language used is  C++.
 
 # Requirements
 
