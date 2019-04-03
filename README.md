@@ -57,7 +57,7 @@ ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-sati
 If round 1 completes, then there are edge and vertex sequences remaining. 
 A remaining edge-sequence corresponds to a pair of literals associated to its endpoints, that belong to a solution. 
 Similarly, a remaining vertex-sequence corresponds to a literal associated to its vertex, that belongs to a solution. 
-For example, suppose there were x literals say, that belong to no solution and there 
+For example, suppose there were x distinct literals say, that belong to no solution and there 
 were y instances (in y clauses), for each of the x literals, then the number of vertex-sequences 
 removed by the algorithm would be xy.
 
