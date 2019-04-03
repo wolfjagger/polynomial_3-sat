@@ -52,7 +52,7 @@ Note well that S-set Comparing is essentially the algorithm (see page 15 of the 
 The output will report if the 3-SAT is satisfiable or un-satisfiable. 
 It will not produce a solution if satisfiable, but other versions do, as described on page 42 of 
 the paper. More precisely, if round 1 completes, the 3-SAT has at least one solution. 
-ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-satisfiable, which is reported.
+ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-satisfiable.
 
 If round 1 completes, then there are edge and vertex sequences remaining. 
 A remaining edge-sequence corresponds to a pair of literals that belong to a solution. 
