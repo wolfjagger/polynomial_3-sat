@@ -34,8 +34,8 @@ Resultant executable (default name is solver) takes one command line argument wh
 ```
 # Output
 
-Output begins with start time and then states if pre-processing was completed. 
-Note that there exist 3-SATs where un-satisfibility is discovered during pre-processing.
+Output begins with a start time and then states if pre-processing was completed. 
+Otherwise, satisfibility or un-satisfibility was discovered during pre-processing, which is reported.
 
 A valid vertex is a vertex that remained after pre-processing, that's not associated with 
 a pure literal. If we assume that the given 3-SAT had no pure literals, or quantum clauses, 
@@ -44,22 +44,22 @@ then the number of vertices is at least the number of given clauses c, and at mo
 
 The edge-sequences (think of edges with additional information, see definition 2.2 of 
 the paper found here: polynomial3sat.org), are contructed whose endpoints are the valid 
-vertices and each vertex has a corresponding vertex-sequence (which are vertices with 
-additional information, see definition 2.6). And, the number of S-sets is the number of clauses pairwise, (c choose 2).
+vertices. Also, each vertex has a corresponding vertex-sequence (which are vertices with 
+additional information, see definition 2.6). Lastly, the number of S-sets is the number of clauses pairwise, (c choose 2).
 
-S-set Comparing is essentially the algorithm (see page 15 of the paper).
+Note well that S-set Comparing is essentially the algorithm (see page 15 of the paper).
 
 The output will report if the 3-SAT is satisfiable or un-satisfiable. 
-It will not produce a solution, but other versions do, as described on page 42 of 
+It will not produce a solution if satisfiable, but other versions do, as described on page 42 of 
 the paper. More precisely, if round 1 completes, the 3-SAT has at least one solution. 
-ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-satisfiable.
+ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-satisfiable, which is reported.
 
 If round 1 completes, then there are edge and vertex sequences remaining. 
 A remaining edge-sequence corresponds to a pair of literals that belong to a solution. 
 Similarly, a remaining vertex-sequence corresponds to a literal that belongs to a solution. 
 For example, suppose there were x literals say, that belong to no solution and there 
 were y instances (in y clauses), of each of them, then the number of vertex-sequences 
-removed would be xy.
+removed by the algorithm would be xy.
 
 Note that if the number of remaining edge-sequences is less than the number initially 
 constructed, but the number of vertex-sequences remains unchanged, it means that every 
