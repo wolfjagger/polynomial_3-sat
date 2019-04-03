@@ -35,7 +35,7 @@ Resultant executable (default name is solver) takes one command line argument wh
 # Output
 
 Output begins with a start time and then states if pre-processing was completed. 
-Otherwise, it is reported if satisfibility or un-satisfibility was discovered during pre-processing.
+Otherwise, it is reported if satisfiability or un-satisfiability was discovered during pre-processing.
 
 A valid vertex is a vertex that remained after pre-processing, that's not associated with 
 a pure literal. If we assume that a given 3-SAT had no pure literals, quantum clauses or clauses of size 1, then the number of vertices is at least the number of given clauses c, and at most, 3c.
@@ -54,7 +54,7 @@ the paper. More precisely, if round 1 completes, the 3-SAT has at least one solu
 ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-satisfiable.
 
 If round 1 completes, then there are edge and vertex sequences remaining. 
-A remaining edge-sequence corresponds to a pair of literals associated to its endpoints, that belong to a solution. 
+A remaining edge-sequence corresponds to a pair of literals associated to its endpoints, that belong to a solution together. 
 Similarly, a remaining vertex-sequence corresponds to a literal associated to its vertex, that belongs to a solution. 
 For example, suppose there were x distinct literals say, that belong to no solution and there 
 were y instances (in y clauses), for each of the x literals, then the number of vertex-sequences 
@@ -62,7 +62,7 @@ removed by the algorithm would be xy.
 
 Note that if the number of remaining edge-sequences is less than the number initially 
 constructed, but the number of vertex-sequences remains unchanged, it means that every 
-literal belongs to at least one solution, but not every pair of literals belong to a solution.
+literal belongs to at least one solution, but not every pair of literals belong to a solution together.
 Also note, that if the 3-SAT is satisfiable, then the number of S-sets must remain unchanged, 
 since every S-set contains an edge-sequence for every solution.
 
