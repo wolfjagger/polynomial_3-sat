@@ -38,7 +38,7 @@ Output begins with a start time and then states if pre-processing was completed.
 Otherwise, it is reported if satisfiability or un-satisfiability was discovered during pre-processing.
 
 A valid vertex is a vertex that remained after pre-processing, that's not associated with 
-a pure literal. If we assume that a given 3-SAT had no pure literals, quantum clauses or clauses of size 1, then the number of vertices is at least the number of given clauses c, and at most, 3c.
+a pure literal. If we assume that a given 3-SAT had no pure literals, quantum clauses or clauses of size 1, then the number of vertices is at least twice the number of given clauses c, and at most, 3c.
 
 
 After pre-processing, the edge-sequences (think of edges with additional information, see definition 2.2 of 
