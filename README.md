@@ -49,7 +49,7 @@ additional information, see definition 2.6). Lastly, the number of S-sets is the
 Note well that essentially, S-set Comparing is the algorithm (see page 15 of the paper).
 
 The output will report if the 3-SAT is satisfiable or un-satisfiable. 
-It will not produce a solution if satisfiable, but other versions do, as described on page 42 of 
+It will not produce a solution if satisfiable, but other versions do, as described on page 41 of 
 the paper. More precisely, if round 1 completes, the 3-SAT has at least one solution. 
 ie. the 3-SAT is satisfiable. If round 1 does not complete, the 3-SAT is un-satisfiable.
 
